@@ -1,0 +1,17 @@
+{% extends 'Sblogs/base.html' %}
+{% block title %}Edit Profile{% endblock %}
+
+ {% block content %}
+<div class="container offset-3 col-md-6">  
+<br/>   
+<h1>Edit Profile...</h1>
+<br/>
+ <div class='form-group'>
+   <form method="POST">
+ 	{% csrf_token %}
+ 	{{ form.as_p }}
+      <div class="form-group" id="signup-button">
+                <button class="btn " style="padding: 2px 2px;color:white;">Update</button>
+     </div>
+</div>  
+ {% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'Sblogs/base.html' %}
+
+{% block content %}
+      <style type="text/css">
+
+	.card {
+	  background: #fff;
+	  border-radius: 2px;
+	  display: inline-block;
+	  height: 300px;
+	  margin: 1rem;
+	  position: relative;
+	  width: 300px;
+	}
+	.card-5 {
+	  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	}
+      </style>        
+<body > 
+
+<ul>
+{% for post in object_list %}
+   <div class="container" >
+   	
+       <div class="row">
+                <div class="col-sm-6" style="margin-left: 25%">
+                	<br/>
+                    <div class="card-5">
+						<li style="list-style: none;"><a href="#" style="text-decoration: none;">
+							<div style=" background-image: linear-gradient(to right,#FDC830,#F37335);border: 0 none;">
+			    			      <h3 style="text-align: center;color: white">{{post.title}}</h3></a><br>
+		   					</div>
+		    				<a href="{% url 'category' post.category|slugify %}" style="text-decoration: none;color: black;"><br/>
+		 	     			  <h6 style="text-align: center;color:black">
+		 	         				<i class="fas fa-clipboard-list" style="color:grey;font-size:25px;"></i>&emsp;
+		              				{{ post.category }} &emsp;</a> <i class="fas fa-user" style="color:grey;font-size:25px;"></i>&emsp;
+		        				{{post.author.first_name}}  {{post.author.last_name}}
+		        			  </h6><br>
+		    				
+
+		    				<p style="text-align: center;color: black">
+						        {{post.snippet}}.....&emsp; <a href="{% url 'articles_detail' post.pk %}" style="text-decoration: none;color:orange;">Explore</a>
+		    				</p>
+	
+		   					
+	    				</li>
+				    </div>
+			    </div>
+		</div>
+	</div>
+{%endfor%}
+</ul>
+
+ {% endblock %}
+
+ </body>

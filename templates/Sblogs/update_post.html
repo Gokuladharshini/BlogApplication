@@ -1,0 +1,36 @@
+{% extends 'Sblogs/base.html' %}
+{% block title %}Edit blog post{% endblock %}
+
+ {% block content %}
+
+ <br>
+ <div class="container col-md-6">
+  <h1 style="color: grey;"><i>Editing with new stories??...<i></h1>
+ </div>
+<div class="container offset-3 col-md-6">
+
+{% if user.is_authenticated %}     
+{% if user.id == post.author.id %} <br/>
+ <div class='form-group'>
+   <form method="POST">
+ 	{% csrf_token %}
+ 	{{ form.media }}
+ 	{{ form.as_p }}
+   <div class="form-group" id="signup-button">
+                <button class="btn " style="padding: 2px 2px;color:white;">Update</button>
+    </div>
+ </div>
+  {% else %} 
+     <h1 style="position:absolute;top:330px;left: 350px; ">You're not allowed to edit the post!</h1>
+
+{% endif %}
+
+{% else %} 
+
+<h1 style="position:absolute;top:330px;left: 350px; ">You're not allowed to edit the post!</h1>
+
+{% endif %}
+</div> 
+
+
+ {% endblock %}

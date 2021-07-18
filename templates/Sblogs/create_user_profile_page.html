@@ -1,0 +1,38 @@
+{% extends 'Sblogs/base.html' %}
+{% block title %}Create a new Profile{% endblock %}
+
+ {% block content %}
+ 
+<div class="container offset-3 col-md-6">
+{% if user.is_authenticated %}
+
+<h1>Create Profile</h1>
+ <br/>
+ <div class='form-group'>
+   <form method="POST" enctype="multipart/form-data">
+ 	{% csrf_token %}
+ 	
+ 	{{ form.as_p }}
+      <div class="form-group" id="signup-button">
+                <button class="btn " style="padding: 5px 5px;color:white;">Create Profile</button>
+     </div>
+ </div>
+ 
+
+{% else %} 
+
+<h1 style="position:absolute;top:330px;left: 220px; ">You're not allowed to add post unless you are logged in!</h1>
+
+{% endif %}
+
+
+</div>
+
+
+
+
+
+
+
+
+ {% endblock %}
